@@ -1,4 +1,4 @@
-## Project base with user authentication
+## Node.js + MySQL + TypeORM
 
 Clone the project and create .env file with these properties:
 

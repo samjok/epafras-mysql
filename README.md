@@ -13,7 +13,7 @@ JWT_SECRET=
 ```
 
 ### Used technologies:
-- Typescript
+- TypeScript
 - Node.js
 - Express
 - MySQL

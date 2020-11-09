@@ -11,6 +11,11 @@ DB_PORT=
 
 JWT_SECRET=
 ```
+In frontend you need to store the token after signing in and include it to http header:
+```
+Authorization: Bearer <token>
+```
+
 
 ### Used technologies:
 - TypeScript

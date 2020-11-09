@@ -1,6 +1,6 @@
 ## Node.js + MySQL + TypeORM
 
-Clone the project and create .env file with these properties:
+Fork and clone the project and create .env file with these properties:
 
 ```
 DB_HOST=

@@ -13,7 +13,7 @@ JWT_SECRET=
 ```
 In frontend you need to store the token after signing in and include it to http header:
 ```
-Authorization: Bearer <token>
+Authorization: bearer <token>
 ```
 
 
@@ -23,3 +23,4 @@ Authorization: Bearer <token>
 - Express
 - MySQL
 - TypeORM
+- JSON Web Token

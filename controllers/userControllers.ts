@@ -3,12 +3,6 @@ import bcrypt from "bcrypt";
 import { getConnection, getRepository } from "typeorm";
 import { User } from "../entities/User";
 
-export const getAllUsers = async (req: Request, res: Response) => {
-    const userRepository = getRepository(User)
-    const users = await userRepository.find()
-    return res.json(users)
-}
-
 export const addUser = async (
     req: Request,
     res: Response,

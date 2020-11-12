@@ -22,7 +22,7 @@ const auth = (
             const existingUser = userRepository.findOne({ where: id })
             if (existingUser) {
                 next();
-            } else res.status(403).send("Forbidden");
+            } else res.status(403).send({ msg: "Forbidden" });
 
         } catch (err) {
             res.send(err);

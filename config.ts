@@ -1,4 +1,5 @@
-import { User } from './entities/User'
+import { Book } from './entities/Book';
+import { User } from './entities/User';
 import { MysqlConnectionOptions } from 'typeorm/driver/mysql/MysqlConnectionOptions';
 import "dotenv/config";
 
@@ -12,8 +13,9 @@ const config: MysqlConnectionOptions = {
     synchronize: true,
     logging: false,
     entities: [
-        User
+        User,
+        Book
     ]
 };
 
-export { config }
+export { config };

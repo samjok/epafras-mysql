@@ -20,8 +20,8 @@ export const addUser = async (
         newUser.password = cryptedPassword;
         const userRepository = getRepository(User);
         const existingUser = await userRepository.findOne({ where: { username } });
-        console.log("existingUser", existingUser);
         if (!existingUser) {
+            userRepository.save(newUser);
             return res.status(200).json({ msg: "User account succesfully registered." });
         } else return res.status(400).json({ msg: "User with this username is already in database." });
     } catch (err) {

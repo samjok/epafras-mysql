@@ -13,19 +13,27 @@ const auth = (
 ): void => {
     const token = req.headers.authorization;
     if (!token) {
-        res.sendStatus(403).send("Forbidden");
+        res.sendStatus(401).send({ error: "Unauthorized" });
     } else
         try {
             const decodedData = jwt.verify(token.split(" ")[1], secret);
             const id = decodedData;
-            const userRepository = getRepository(User)
-            const existingUser = userRepository.findOne({ where: id })
+            const userRepository = getRepository(User);
+            const existingUser = userRepository.findOne({ where: id });
             if (existingUser) {
                 next();
-            } else res.status(403).send({ msg: "Forbidden" });
+            } else res.status(401).send({ error: "Unauthorized" });
 
         } catch (err) {
-            res.send(err);
+            if (err.name === "JsonWebTokenError") {
+                res.status(401).send({ error: "Unauthorized" });
+            }
+            if (err.name === "TokenExpiredError") {
+                res.status(401).send({ error: "Session ended" });
+            }
+            else {
+                res.status(500).send({ error: "Server error" });
+            }
         }
 };
 

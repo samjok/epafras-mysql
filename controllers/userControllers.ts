@@ -21,10 +21,10 @@ export const addUser = async (
         const userRepository = getRepository(User);
         const existingUser = await userRepository.findOne({ where: { username } });
         if (!existingUser) {
-            userRepository.save(newUser);
-            return res.status(200).json({ msg: "User account succesfully registered." });
-        } else return res.status(400).json({ msg: "User with this username is already in database." });
+            await userRepository.save(newUser);
+            return res.status(200).json({ msg: "User account succesfully registered" });
+        } else return res.status(409).json({ error: "User with this username is already in database" });
     } catch (err) {
-        return res.status(501).json(err.stack);
+        return res.status(501).send({ error: "Server error" });
     }
 };

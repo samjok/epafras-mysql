@@ -18,13 +18,12 @@ export const addBook = async (
         newBook.description = description;
         const bookRepository = getRepository(Book);
         const existingBook = await bookRepository.findOne({ where: { isbn } });
-        console.log("existingBook", existingBook);
         if (!existingBook) {
             const book = await bookRepository.save(newBook);
-            return res.status(200).json(book);
-        } else return res.status(400).json({ msg: "The book is already in database." });
+            return res.status(200).send({ msg: "Book added to database", book });
+        } else return res.status(409).json({ error: "The book is already in database" });
     } catch (err) {
-        return res.status(501).send(err.stack);
+        return res.status(501).send({ error: "Server error" });
     }
 };
 
@@ -37,6 +36,6 @@ export const getAllBooks = async (
         const books = await bookRepository.find();
         return res.status(200).json(books);
     } catch (err) {
-        return res.status(501).send(err.stack);
+        return res.status(501).send({ error: "Server error" });
     }
 };

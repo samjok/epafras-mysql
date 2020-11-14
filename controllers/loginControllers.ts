@@ -25,9 +25,9 @@ export const login = async (
                     data: existingUser.id
                 }, secret, { expiresIn: 60 * 60 }); // token expires after 60 minutes
                 return res.json({ token });
-            } else return res.status(501).json({ msg: "Unauthorized" });
-        } else return res.status(501).json({ msg: "Unauthorized" });
+            } else return res.status(401).send({ error: "Wrong username or password" });
+        } else return res.status(401).send({ error: "Wrong username or password" });
     } catch (err) {
-        return res.status(501).send(err.stack);
+        return res.status(501).send({ error: "Server error" });
     }
 };

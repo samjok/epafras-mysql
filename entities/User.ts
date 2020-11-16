@@ -16,6 +16,9 @@ export class User {
     })
     password: string;
 
+    @Column()
+    admin: boolean;
+
 
 }
 

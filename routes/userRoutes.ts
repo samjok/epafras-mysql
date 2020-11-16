@@ -2,6 +2,7 @@ import { Router } from "express";
 import { addUser } from "../controllers/userControllers";
 import { body, validationResult } from "express-validator";
 import { Request, Response, NextFunction } from "express";
+import auth from "../middlewares/authenticationMiddleware";
 
 const userRoutes = (): Router => {
     const router = Router();
@@ -15,7 +16,7 @@ const userRoutes = (): Router => {
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
         } return next();
-    }, addUser);
+    }, auth, addUser);
     return router;
 };
 

@@ -3,7 +3,7 @@ import { User } from './entities/User';
 import { MysqlConnectionOptions } from 'typeorm/driver/mysql/MysqlConnectionOptions';
 import "dotenv/config";
 
-const config: MysqlConnectionOptions = {
+const databaseConfig: MysqlConnectionOptions = {
     type: "mysql",
     host: String(process.env.DB_HOST),
     port: Number(process.env.DB_PORT),
@@ -14,8 +14,8 @@ const config: MysqlConnectionOptions = {
     logging: false,
     entities: [
         User,
-        Book
+        Book,
     ]
 };
 
-export { config };
+export { databaseConfig };

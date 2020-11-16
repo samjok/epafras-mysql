@@ -2,8 +2,9 @@ import express from "express";
 import cors from "cors";
 import { createRoutes } from "./routes/routes";
 import "reflect-metadata";
-import { createConnection, Connection } from "typeorm"
-import { config } from './config'
+import { createConnection, Connection } from "typeorm";
+import { databaseConfig } from './databaseConfig';
+import { getRepository } from "typeorm";
 
 const app = express();
 app.use(cors());
@@ -20,6 +21,6 @@ app.listen(port, () => {
     console.log(`Server is running on port ${port}.`);
 });
 
-createConnection(config).then(async () => {
-    console.log("Server is connected to MySQL database.")
-}).catch(e => console.log(e))
+createConnection(databaseConfig).then(async () => {
+    console.log("Server is connected to MySQL database.");
+}).catch(e => console.log(e));

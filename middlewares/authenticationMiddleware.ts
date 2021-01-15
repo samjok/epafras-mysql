@@ -13,10 +13,9 @@ const auth = (
     next: NextFunction
 ): void => {
     const token = req.headers.authorization;
-    if (!token) {
-        res.sendStatus(401).send({ error: "Unauthorized" });
-    } else
-        try {
+    try {
+        if (token) {
+
             const decodedData = jwt.verify(token.split(" ")[1], secret);
             const id = Number((decodedData as IToken).data);
             const userRepository = getRepository(User);
@@ -27,15 +26,16 @@ const auth = (
                     next();
                 });
             } else res.status(401).send({ error: "Unauthorized" });
-        } catch (err) {
-            if (err.name === "JsonWebTokenError") {
-                res.status(401).send({ error: "Unauthorized" });
-            }
-            if (err.name === "TokenExpiredError") {
-                res.status(401).send({ error: "Session ended" });
-            }
-            else res.status(500).send({ error: "Server error" });
+        } else res.status(401).send({ error: "Unauthorized" });
+    } catch (err) {
+        if (err.name === "JsonWebTokenError") {
+            res.status(401).send({ error: "Unauthorized" });
         }
+        if (err.name === "TokenExpiredError") {
+            res.status(401).send({ error: "Session ended" });
+        }
+        else res.status(500).send({ error: "Server error" });
+    }
 };
 
 export default auth;

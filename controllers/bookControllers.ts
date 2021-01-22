@@ -6,12 +6,12 @@ export const addBook = async (
     req: Request,
     res: Response,
 ): Promise<Response> => {
-    const { isbn, title, author, published, edition, pages, description } = req.body;
+    const { isbn, title, author1, published, edition, pages, description } = req.body;
     try {
         const newBook = new Book();
         newBook.isbn = isbn;
         newBook.title = title;
-        newBook.author = author;
+        newBook.author1 = author1;
         newBook.edition = edition;
         newBook.published = published;
         newBook.pages = pages;

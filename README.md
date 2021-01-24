@@ -1,8 +1,11 @@
-## Book database app (Node.js backend)
+## Kirjatietokanta
+Tämä koodirepositorio sisältää Node.js-backendin, joka käyttää MySQL-tietokantaa. Sovelluksen käyttötarkoitus on toimia kirjatietokantana, johon voi lisätä ja poistaa kirjoja. Sovelluksen käyttäjienhallinta on tällä hetkellä toteutettu, niin, että vain admin-oikeuksilla voi rekisteröidä uusia käyttäjiä.
 
-Latest update 2020-Nov-12
+Projektin päämääränä on toteuttaa kirjastosovellus, jolla on mahdollista lainata kirjoja.
 
-Fork and clone the project and create .env file with these properties:
+### Ohjeet sovelluksen käynnistämiseen
+
+Tämä sovellus käyttää MySQL-tietokantaa ja yhdistääksesi sovelluksen omaan tietokantaasi lisää seuraavat ympäristömuuttujat .env-tiedostoon:
 
 ```
 DB_HOST=
@@ -13,22 +16,12 @@ DB_PORT=
 
 JWT_SECRET=
 ```
-There is already env-template on project directory which you can use to create .env file.
-Add your MySQL database properties there.
-
-You can start app with command
+Sovellus käynnistyy komennolla
 ```
 npm start
 ```
 
-Or with nodemon:
+Tai nodemonin kanssa komennolla
 ```
 npm run watch
 ```
-
-In frontend you need to store the token after signing in and include it to http header:
-```
-Authorization: bearer <token>
-```
-
-At the moment there is only one route which needs authorization token (for adding new books to database).

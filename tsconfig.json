@@ -1,4 +1,11 @@
 {
+    "include": [
+        "/**/*.ts"
+    ],
+    "exclude": [
+        "node_modules",
+        "**/*.spec.ts"
+    ],
     "compilerOptions": {
         "lib": [
             "es5",

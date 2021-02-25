@@ -1,7 +1,5 @@
 ## Kirjatietokanta
-Tämä koodirepositorio sisältää Node.js-backendin, joka käyttää MySQL-tietokantaa. Sovelluksen käyttötarkoitus on toimia kirjatietokantana, johon voi lisätä ja poistaa kirjoja. Sovelluksen käyttäjienhallinta on tällä hetkellä toteutettu, niin, että vain admin-oikeuksilla voi rekisteröidä uusia käyttäjiä.
-
-Projektin päämääränä on toteuttaa kirjastosovellus, jolla on mahdollista lainata kirjoja.
+Tämä koodirepositorio sisältää Node.js-backendin, joka käyttää MySQL-tietokantaa. Sovelluksen käyttötarkoitus on toimia kirjatietokantana, johon voi lisätä ja poistaa kirjoja.
 
 ### Ohjeet sovelluksen käynnistämiseen
 
